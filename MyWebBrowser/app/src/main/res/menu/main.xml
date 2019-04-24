@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Searching Site" android:id="@+id/menu_site">
+        <menu
+        >
+            <item android:title="Google" android:id="@+id/action_google"/>
+            <item android:title="Naver" android:id="@+id/action_naver"/>
+            <item android:title="Daum" android:id="@+id/action_daum"/>
+        </menu>
+    </item>
+    <item android:id="@+id/menu_info" android:title="Developer Info">
+        <menu
+        >
+            <item android:title="전화 걸기" android:id="@+id/action_call"/>
+            <item android:title="문자 보내기" android:id="@+id/action_send_text"/>
+            <item android:title="이메일 보내기" android:id="@+id/action_email"/>
+        </menu>
+    </item>
+    <item android:title="Home" android:id="@+id/menu_home" android:icon="@drawable/ic_home_black_24dp"/>
+</menu>
