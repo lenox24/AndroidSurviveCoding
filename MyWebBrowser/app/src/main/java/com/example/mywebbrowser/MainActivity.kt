@@ -5,11 +5,17 @@ import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.browse
+import org.jetbrains.anko.email
+import org.jetbrains.anko.sendSMS
+import org.jetbrains.anko.share
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +39,8 @@ class MainActivity : AppCompatActivity() {
                 false
             }
         }
+
+        registerForContextMenu(view_web_main)
     }
 
     override fun onBackPressed() {
@@ -75,12 +83,35 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.action_send_text -> {
-
+                sendSMS("031-123-4567", view_web_main.url)
+                return true
             }
 
             R.id.action_email -> {
-
+                email("test@example.com", "좋은 사이트", view_web_main.url)
+                return true
             }
         }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        menuInflater.inflate(R.menu.context, menu)
+    }
+
+    override fun onContextItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.action_share -> {
+                share(view_web_main.url)
+                return true
+            }
+
+            R.id.action_browser -> {
+                browse(view_web_main.url)
+                return true
+            }
+        }
+        return super.onContextItemSelected(item)
     }
 }
