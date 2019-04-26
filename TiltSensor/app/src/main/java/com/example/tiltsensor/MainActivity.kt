@@ -12,6 +12,9 @@ import android.util.Log
 import android.view.WindowManager
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
+
+    private lateinit var tiltView: TiltView
+
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -22,14 +25,13 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 "MainActivity : ",
                 "onSensorChanged - x : ${event.values[0]}, y : ${event.values[1]}, z : ${event.values[2]}"
             )
+            tiltView.onSensorEvent(event)
         }
     }
 
     private val sensorManager by lazy {
         getSystemService(Context.SENSOR_SERVICE) as SensorManager
     }
-
-    private lateinit var tiltView : TiltView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
