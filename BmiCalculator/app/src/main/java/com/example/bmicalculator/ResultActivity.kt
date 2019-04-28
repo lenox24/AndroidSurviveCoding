@@ -17,7 +17,7 @@ class ResultActivity : AppCompatActivity() {
         val height: Double = intent.getStringExtra("height").toDouble()
 
         val bmi: Double = weight / Math.pow(height/100.0, 2.0)
-        Log.d("BMI : ","bmi : ${bmi.toString()}")
+        Log.d("Result - BMI : ","bmi : ${bmi.toString()}")
 
         when {
             bmi >= 35 -> tex_view_result.text = "고도 비만"
