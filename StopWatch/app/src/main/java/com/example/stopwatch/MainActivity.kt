@@ -30,8 +30,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_lab_main.setOnClickListener {
-            if (time != 0)
+            if (time != 0) {
                 recordLapTime()
+            }
         }
 
         fab_reset_main.setOnClickListener {
