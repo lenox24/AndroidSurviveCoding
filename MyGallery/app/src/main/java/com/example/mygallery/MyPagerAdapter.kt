@@ -16,7 +16,7 @@ class MyPagerAdapter(fm: FragmentManager?) : FragmentStatePagerAdapter(fm) {
         return items.size
     }
 
-    fun updateFragments(item: List<Fragment>) {
+    fun updateFragments(items: List<Fragment>) {
         this.items.addAll(items)
     }
 

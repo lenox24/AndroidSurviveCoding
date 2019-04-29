@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 val uri = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA))
-                Log.d("MainActivity", uri)
+                Log.d("MainActivity URI : ", uri)
                 fragment.add(PhotoFragment.newInstance(uri))
             }
             cursor.close()
