@@ -4,7 +4,7 @@ import android.content.Context
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraManager
 
-class Touch(context: Context) {
+class Torch(context: Context) {
     private var cameraId: String? = null
     private val cameraManager = context.getSystemService(Context.CAMERA_SERVICE)
             as CameraManager
