@@ -10,7 +10,7 @@ class Torch(context: Context) {
             as CameraManager
 
     init {
-        cameraManager = getCameraId()
+        cameraId = getCameraId()
     }
 
     fun flashOn() {
