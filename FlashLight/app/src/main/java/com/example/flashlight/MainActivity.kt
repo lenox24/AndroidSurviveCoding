@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         switch_flash.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked) {
+            if (isChecked) {
                 startService(intentFor<TorchService>().setAction("on"))
             } else {
                 startService(intentFor<TorchService>().setAction("off"))
