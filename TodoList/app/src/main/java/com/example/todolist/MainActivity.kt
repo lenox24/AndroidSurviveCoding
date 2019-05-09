@@ -9,6 +9,7 @@ import io.realm.Sort
 import io.realm.kotlin.where
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +21,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        val realmResult = realm.where<Todo>().findAll().sort("date", Sort.DESCENDING)
+        val realmResult = realm.where<Todo>().findAll().sort("date", Sort.ASCENDING)
+        val adapter = TodoListAdapter(realmResult)
+        list_todo_main.adapter = adapter
+
+        realmResult.addChangeListener { _ -> adapter.notifyDataSetChanged() }
+
+        list_todo_main.setOnItemClickListener { parent, view, position, id ->
+            startActivity<EditActivity>("id" to id)
+        }
 
         fab_add_main.setOnClickListener {
             startActivity<EditActivity>()
